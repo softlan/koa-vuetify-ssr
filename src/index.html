@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Vuetify</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Vue.js project">
+    <meta name="keywords" content="">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="public/favicon-32x32.png" sizes="32x32">
+    <% if(htmlWebpackPlugin.options.environment === 'production') { %>
+    <% for(key in htmlWebpackPlugin.files.css){ %>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[key] %>">
+    <% } %>
+    <% } %>
+  </head>
+  <body>
+    <noscript id="deferred-styles"></noscript>
+    <!-- placeholder -->
+    {{ APP }}
+    <script>
+      var loadDeferredStyles = function() { var e = document.getElementById("deferred-styles"),t = document.head.getElementsByTagName("meta");t[t.length - 1].insertAdjacentHTML("afterend", e.textContent);e.parentElement.removeChild(e) }
+      var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame; raf ? raf(function() { window.setTimeout(loadDeferredStyles, 0) }) : window.addEventListener("load", loadDeferredStyles);
+    </script>
+    <% if(htmlWebpackPlugin.options.environment === 'production') { %>
+    <% for(key in htmlWebpackPlugin.files.js){ %>
+    <script defer src="<%= htmlWebpackPlugin.files.js[key] %>"></script>
+    <% } %>
+    <% } %>
+  </body>
+</html>
